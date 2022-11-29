@@ -1,11 +1,13 @@
 #Natália Sens Weise e Matheus Petters Bevilaqua
 import random
 
-memory_limit = 10
+memory_space = 10
 memory = []
-while memory_limit != 0:
+while memory_space != 0:
     memory.append(0)
-    memory_limit-=1
+    memory_space-=1
+
+memory_limit = 20
 
 def show_memory():
     print(memory)
@@ -45,15 +47,25 @@ def select_positions(i):
 
 def alocatte_memory():
     global tam 
+    temp = tam
     i = sorting_index()
+    while memory[i] == 1:
+        i = sorting_index()
     positions = select_positions(i)
 
     for index in positions:
-        if memory[index] == 1:
+        if memory[index] != 0:
             print(index)
             alocatte_memory()
+
+    teste = []
+    while temp > 0:
+        teste.append(1)
+        temp-=1
+        
     for index in positions:
-        memory[index] = 1
+        memory[index] = teste
+        break
 
     waiting_process()
     
