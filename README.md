@@ -8,4 +8,4 @@ Projeto desenvolvido para a disciplina de Sistemas Operacionais. Consiste em um 
     * um editor de código (ex: [VSCode](https://code.visualstudio.com/));
     * e, dentro do VSCode, instalar a extensão do Python no editor.
   
-  * Após isso, basta executar o programa escrevendo no terminal da pasta `python memory-simulator.py` e seguir as instruções que aparecerem na tela.
+  * Após isso, basta executar o programa escrevendo no terminal da pasta `python trabalho.py` e seguir as instruções que aparecerem na tela.
