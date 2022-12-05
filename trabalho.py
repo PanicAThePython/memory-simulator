@@ -2,7 +2,6 @@
 import random
 limite = 10
 memoria = [[], [], [], [], []]
-contador = 0
 ocupados = []
 tamanho = 0
 
@@ -25,7 +24,6 @@ def is_full():
 
 #coloca na memoria o processo em uma posição livre
 def put_in_memory():
-    global contador
     temp = []
     for _ in range(tam):
         temp.append(1)
@@ -35,7 +33,6 @@ def put_in_memory():
         index = sorting_index()
     memoria[index] = temp
     ocupados.append(index)
-    contador+=1
 
 #remove o processo, e coloca vários 0 no lugar
 def remove_in_memory():
@@ -49,14 +46,14 @@ def remove_in_memory():
         temp.append(0)
 
     memoria[index] = temp
-    ocupados.append(index)
+    ocupados.remove(index)
 
-#essa função é pra verificar se tem algum array de 0 consecutivo pra unir eles
+#essa função é pra verificar se tem algum array de 0 consecutivo pra unir eles, e se tiver unir
 def verify_free_space():
     temp = []
     for index in range(len(memoria)):
         if memoria[index].__contains__(0):
-            if index < len(memoria) - 1:
+            if index != len(memoria) - 1:
                 if memoria[index+1].__contains__(0):
                     for i in memoria[index]:
                         temp.append(i)
@@ -64,27 +61,29 @@ def verify_free_space():
                         temp.append(i)
                     print(memoria)
                     memoria.pop(index)
+                    print(index+1)
                     memoria[index+1] = temp
                     break
             else:
                 if memoria[index-1].__contains__(0):
                     for i in memoria[index]:
                         temp.append(i)
-                    for i in memoria[index+1]:
+                    for i in memoria[index-1]:
                         temp.append(i)
                     print(memoria)
                     memoria.pop(index)
-                    memoria[index+1] = temp
+                    memoria[index-1] = temp
                     break
 
 #espera pelo tamanho do processo e daí põe na memória 
 def ask_for_process():
-    global contador
     global tam
     tam = int(input('Espaço que deseja ocupar: '))
 
     while (((tamanho + tam ) > limite) and (not is_full())):
-        tam = int(input('não há espaço suficiente, tente um espaço menor....'))
+        remove_in_memory()
+        verify_free_space()
+
     if not is_full():
         put_in_memory()
         if is_full():
@@ -94,4 +93,3 @@ def ask_for_process():
 while True:
     print(memoria)
     ask_for_process()
-print(memoria)
