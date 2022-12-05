@@ -22,6 +22,6 @@ Consiste em um simulador de alocação de memória particionada dinâmica.
   * Ex:`[[0, 0, 0, 0], [1, 1], [1, 1, 1], [1]]`
   
   Quando listas de 0s estiverem seguidas uma da outra, irá uní-las (simulação da solução para fragmentação em memória particionada dinâmica). 
-  * Ex: `[[0, 0, 0, 0], [0, 0], [1, 1, 1], [1], [1, 1, 1, 1]]`, `[[0, 0, 0, 0, 0, 0], [1, 1, 1], [1], [1, 1, 1, 1]]`
+  * Ex: `[[0, 0, 0, 0], [0, 0], [1, 1, 1], [1], [1, 1, 1, 1, 1]]`, `[[0, 0, 0, 0, 0, 0], [1, 1, 1], [1], [1, 1, 1, 1, 1]]`
   
   Para encerrar, basta dar CTRL + X.
