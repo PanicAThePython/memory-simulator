@@ -78,7 +78,7 @@ def ask_for_process():
         remove_in_memory()
         verify_free_space()
 
-    while tam < 0 or tam >= limite:
+    while tam < 1 or tam >= limite:
         print("Tamanho inválido, tente entre 1 e 10...")
         tam = int(input('Espaço mito que deseja ocupar: '))
 
