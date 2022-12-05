@@ -17,8 +17,10 @@ Consiste em um simulador de alocação de memória particionada dinâmica.
   Caso o processo seja maior que o limite (10) ou menor que 1 irá solicitar um outro valor ao usuário.
   Quando tiver obtido um valor compatível, irá adicionar na memória como listas de 1s (simulação da fragmentação). 
   * Ex: `[[1, 1, 1, 1], [1, 1]]`
+  
   Quando a memória estiver cheia, ele vai começar a remover processos qleatoriamente, colocando uma lista de 0s no lugar. 
   * Ex:`[[0, 0, 0, 0], [1, 1], [1, 1, 1], [1]]`
+  
   Quando listas de 0s estiverem seguidas uma da outra, irá uní-las (simulação da solução para fragmentação em memória particionada dinâmica). 
   * Ex: `[[0, 0, 0, 0], [0, 0], [1, 1, 1], [1], [1, 1, 1, 1]]`, `[[0, 0, 0, 0, 0, 0], [1, 1, 1], [1], [1, 1, 1, 1]]`
   
