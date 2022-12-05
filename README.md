@@ -1,5 +1,6 @@
 # memory-simulator
-Projeto desenvolvido para a disciplina de Sistemas Operacionais. Consiste em um simulador de alocação de memória.
+Projeto desenvolvido para a disciplina de Sistemas Operacionais. 
+Consiste em um simulador de alocação de memória particionada dinâmica.
 
 ## O que preciso para executá-lo?
 
@@ -9,3 +10,12 @@ Projeto desenvolvido para a disciplina de Sistemas Operacionais. Consiste em um 
     * e, dentro do VSCode, instalar a extensão do Python no editor.
   
   * Após isso, basta executar o programa escrevendo no terminal da pasta `python trabalho.py` e seguir as instruções que aparecerem na tela.
+
+## Como funciona?
+
+  O sistema mostrará a memória (que está vazia) e pedirá o tamanho do processo que vai entrar.
+  Caso o processo seja maior que o limite (10) ou menor que 1 irá solicitar um outro valor ao usuário.
+  Quando tiver obtido um valor compatível, irá adicionar na memória como listas de 1s (simulação da fragmentação).
+  Quando a memória estiver cheia, ele vai começar a remover processos, colocando uma lista de 0s no lugar.
+  Quando listas de 0s estiverem seguidas uma da outra, irá uní-las (simulação da solução para fragmentação em memória particionada dinâmica).
+  Para encerrar, basta dar CTRL + X.

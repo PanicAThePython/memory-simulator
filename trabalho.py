@@ -32,7 +32,6 @@ def put_in_memory():
 #remove o processo, e coloca vários 0 no lugar
 def remove_in_memory():
     index = sorting_index()
-    print(index)
     while not memoria[index].__contains__(1):
         index = sorting_index()
     taman = len(memoria[index])
@@ -70,12 +69,23 @@ def ask_for_process():
     global tam
     tam = int(input('Espaço que deseja ocupar: '))
 
-    while (((tamanho + tam ) > limite) and (not is_full())):
+    # se o tamanho ocupado em memória juntamente com o processo que está pra entrar superar o limite
+    # e se o limite ainda não foi atingido
+    # e se existe algo na memória
+    # um processo será removido da memória para adicionar esse novo
+    # e será verificado se existem espaços vazios consecutivos
+    while (((tamanho + tam ) > limite) and (not is_full()) and tamanho > 0):
         remove_in_memory()
         verify_free_space()
 
+    while tam < 0 or tam >= limite:
+        print("Tamanho inválido, tente entre 1 e 10...")
+        tam = int(input('Espaço mito que deseja ocupar: '))
+
+    # se tem espaço na memória, irá adicionar o processo
     if not is_full():
         put_in_memory()
+        # se atingiu o limite, irá remover um processo
         if is_full():
             remove_in_memory()
     verify_free_space()
