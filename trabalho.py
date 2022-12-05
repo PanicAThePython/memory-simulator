@@ -22,6 +22,8 @@ def is_full():
 
 #coloca na memoria o processo em uma posição livre
 def put_in_memory():
+    if len(memoria) == 2 and memoria[0].__contains__(0):
+        memoria.pop(0)
     temp = []
     for _ in range(tam):
         temp.append(1)
@@ -77,9 +79,6 @@ def ask_for_process():
         if is_full():
             remove_in_memory()
     verify_free_space()
-
-    if len(memoria) == 1 and memoria[0].__contains__(0):
-        memoria.pop()
                     
 while True:
     print(memoria)
