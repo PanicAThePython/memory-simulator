@@ -1,13 +1,11 @@
 #Natália Sens Weise e Matheus Petters Bevilaqua
 import random
 limite = 10
-memoria = [[], [], [], [], []]
-ocupados = []
+memoria = []
 tamanho = 0
 
 #sorteia um index
 def sorting_index():
-    global tam 
     i = random.randrange(0, 5)
     while i < 0:
         i = (random.randrange(0, 5))
@@ -27,26 +25,18 @@ def put_in_memory():
     temp = []
     for _ in range(tam):
         temp.append(1)
-    index = sorting_index()
-
-    while ocupados.__contains__(index):
-        index = sorting_index()
-    memoria[index] = temp
-    ocupados.append(index)
+    memoria.append(temp)
 
 #remove o processo, e coloca vários 0 no lugar
 def remove_in_memory():
     index = sorting_index()
-
-    while not ocupados.__contains__(index):
+    while not memoria[index].__contains__(1):
         index = sorting_index()
-    t = len(memoria[index])
+    taman = len(memoria[index])
     temp = []
-    for _ in range(t):
+    for _ in range(taman):
         temp.append(0)
-
     memoria[index] = temp
-    ocupados.remove(index)
 
 #essa função é pra verificar se tem algum array de 0 consecutivo pra unir eles, e se tiver unir
 def verify_free_space():
@@ -59,10 +49,8 @@ def verify_free_space():
                         temp.append(i)
                     for i in memoria[index+1]:
                         temp.append(i)
-                    print(memoria)
-                    memoria.pop(index)
-                    print(index+1)
-                    memoria[index+1] = temp
+                    memoria[index] = temp
+                    memoria.pop(index+1)
                     break
             else:
                 if memoria[index-1].__contains__(0):
@@ -70,9 +58,8 @@ def verify_free_space():
                         temp.append(i)
                     for i in memoria[index-1]:
                         temp.append(i)
-                    print(memoria)
-                    memoria.pop(index)
-                    memoria[index-1] = temp
+                    memoria[index] = temp
+                    memoria.pop(index-1)
                     break
 
 #espera pelo tamanho do processo e daí põe na memória 
