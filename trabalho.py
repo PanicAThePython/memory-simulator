@@ -6,9 +6,9 @@ tamanho = 0
 
 #sorteia um index
 def sorting_index():
-    i = random.randrange(0, 5)
+    i = random.randrange(0, len(memoria))
     while i < 0:
-        i = (random.randrange(0, 5))
+        i = (random.randrange(0, len(memoria)))
     return i
 
 #verifica se tem algo na memória
@@ -30,6 +30,7 @@ def put_in_memory():
 #remove o processo, e coloca vários 0 no lugar
 def remove_in_memory():
     index = sorting_index()
+    print(index)
     while not memoria[index].__contains__(1):
         index = sorting_index()
     taman = len(memoria[index])
@@ -76,6 +77,9 @@ def ask_for_process():
         if is_full():
             remove_in_memory()
     verify_free_space()
+
+    if len(memoria) == 1 and memoria[0].__contains__(0):
+        memoria.pop()
                     
 while True:
     print(memoria)
